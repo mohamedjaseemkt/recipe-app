@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Recipe List
+{% endblock %}
+
+{% block content %}
+{% load static %}
+<body>
+    <h1>Recipe List</h1>
+    <ul>
+        {% for recipe in recipes %}
+        <li>
+            <strong>{{ recipe.title }}</strong><br>
+            Ingredients: {{ recipe.ingredients }}<br>
+            Instructions: {{ recipe.instructions }}
+        </li>
+        {% empty %}
+        <li>No recipes available</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'add_recipe' %}">Add a new recipe</a>
+</body>
+{% endblock %}
